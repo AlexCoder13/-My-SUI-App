@@ -80,10 +80,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A28615E2DB11FE60017BCE5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3AB12A0E2DA5598C00F10B13 = {
 			isa = PBXGroup;
 			children = (
 				3AB12A192DA5598C00F10B13 /* My SUI App */,
+				3A28615E2DB11FE60017BCE5 /* Frameworks */,
 				3AB12A182DA5598C00F10B13 /* Products */,
 			);
 			sourceTree = "<group>";
