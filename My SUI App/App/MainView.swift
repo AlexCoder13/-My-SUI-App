@@ -12,12 +12,17 @@ struct MainView: View {
     
     // MARK: - Properties
     @FirestoreQuery(collectionPath: "shop") var items: [Product]
+    var columns = Array(repeating: GridItem(), count: 2)
     
     // MARK: - Body
     var body: some View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
-                
+                LazyVGrid(columns: columns) {
+                    ForEach(items) { item in
+                        ProductCardView(product: item)
+                    }
+                }
             }
             
             // MARK: - Navigation Bar
