@@ -10,6 +10,7 @@ import SwiftUI
 struct ProductCardView: View {
     
     // MARK: - Properties
+    @EnvironmentObject var vm: ViewModel
     let product: Product
     
     // MARK: - Body
@@ -27,7 +28,7 @@ struct ProductCardView: View {
                         )
                         
                         Button {
-                            // action
+                            vm.toggleFavorite(product: product)
                         } label: {
                             Image(systemName: "heart.fill")
                                 .padding(10)
@@ -39,27 +40,26 @@ struct ProductCardView: View {
                     }
                 }
                 
-                VStack {
+                VStack(alignment: .leading) {
                     Text(product.name)
+                        .titleFont()
+                        .lineLimit(1)
                     
                     Text("$\(product.price)")
+                        .subTitle()
                 }
+                .padding(10)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(.background.opacity(0.5))
+                .cornerRadius(10)
+                .padding(10)
             }
         }
         .frame(height: UIScreen.main.bounds.width * 0.7)
-        .background(.background.opacity(0.5))
-        .padding(10)
     }
 }
 
 #Preview {
-    ProductCardView(
-        product: Product(
-            name: "Dual Sense",
-            description: "DD",
-            image: "https://i.pinimg.com/550x/69/41/26/69412658f34575e1aa5321f475da53bb.jpg",
-            price: 100,
-            isFavorite: false
-        )
-    )
+    MainView()
+        .environmentObject(ViewModel())
 }

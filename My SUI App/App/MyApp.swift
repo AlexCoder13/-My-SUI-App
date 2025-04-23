@@ -18,13 +18,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct MyApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    // MARK: - Properties
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var vm = ViewModel()
+    
+    // MARK: - Body
     var body: some Scene {
         WindowGroup {
             
             MainView()
-            
+                .environmentObject(vm)
         }
     }
 }
